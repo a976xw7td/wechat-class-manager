@@ -1,0 +1,27 @@
+# Sensitive / generated data
+messages.jsonl
+classified.jsonl
+linked.jsonl
+submissions.json
+alerts.json
+qa_pairs.json
+weekly_report.md
+wechat-class-manager/data/graph.db
+wechat-class-manager/config/group_nicknames.yaml
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# Dev / OS files
+.git/
+.omc/
+wechat-class-manager/.omc/
+.DS_Store
+.watcher_checkpoint.json
+
+# IDE
+.vscode/
+.idea/

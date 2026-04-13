@@ -260,4 +260,4 @@ def api_stats():
 
 if __name__ == "__main__":
     print("[*] Dashboard starting at http://localhost:8080")
-    app.run(debug=False, port=8080)
+    app.run(debug=False, host="0.0.0.0", port=8080)

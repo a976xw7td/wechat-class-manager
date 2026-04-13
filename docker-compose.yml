@@ -1,0 +1,8 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "8080:8080"
+    # Uncomment to use your own WeChat data:
+    # volumes:
+    #   - ./messages.jsonl:/data/messages.jsonl
