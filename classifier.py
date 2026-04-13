@@ -14,7 +14,13 @@ import argparse
 import json
 import re
 import sys
+from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from config_loader import get_config
+
+_cfg = get_config()
+_ch_pat = _cfg.challenge_ref_pattern  # e.g. \bC[1-8][A-Z]?\b
 
 # ---------------------------------------------------------------------------
 # Rule-based classifier
@@ -22,7 +28,7 @@ import sys
 
 SUBMISSION_PATTERNS = [
     r"#接龙", r"提交", r"完成了", r"已完成", r"上传", r"我的作业",
-    r"这是我的", r"这是我做的", r"C\d[A-Z]?\s*(提交|完成|上传)",
+    r"这是我的", r"这是我做的", rf"{_ch_pat}\s*(提交|完成|上传)",
     r"\.(py|md|pdf|zip|ipynb|js|html)\b",
     r"Level\s*[1-4]", r"Bronze|Silver|Gold|Platinum",
 ]
@@ -46,7 +52,7 @@ RESOURCE_PATTERNS = [
 
 ANSWER_SIGNAL = r"↳|回复|是的|对的|没错|可以|不行|不能|应该|建议"
 
-CHALLENGE_REF = r"\bC[1-8][A-Z]?\b"
+CHALLENGE_REF = _ch_pat
 
 
 def classify(msg: dict) -> str:

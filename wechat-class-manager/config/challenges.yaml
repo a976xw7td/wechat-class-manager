@@ -3,42 +3,48 @@ challenges:
     name_cn: 环境配置
     name_en: Environment Setup
     levels: [Bronze, Silver, Gold, Platinum]
+    keywords: [环境, setup, install, 配置, python, vscode, terminal, 终端, pip, conda, venv]
 
   - id: C2
     name_cn: API接入
     name_en: API Integration
     levels: [Bronze, Silver, Gold, Platinum]
+    keywords: [api, 接口, request, response, json, http, openai, anthropic, claude, key, token]
 
   - id: C3
     name_cn: 群内参与
     name_en: Group Participation
     levels: [Bronze, Silver, Gold, Platinum]
+    keywords: [群, 参与, discussion, 消息, 发言, 互动, 活跃, 回复]
 
   - id: C4
     name_cn: 技能分享
     name_en: Skill Sharing
     levels: [Bronze, Silver, Gold, Platinum]
+    keywords: [skill, 技能, 分享, 知识, 能力, tool, 教程, 推荐, 资料]
 
   - id: C5
     name_cn: GitHub主页
     name_en: GitHub Pages
     due_date: "2026-04-20"
     levels: [Bronze, Silver, Gold, Platinum]
-    signal_keywords: [github, git, repo, 仓库, pages]
+    keywords: [github, git, repo, 仓库, commit, push, pull, pages, clone, branch]
 
   - id: C6
     name_cn: 仪表盘
     name_en: Dashboard
     levels: [Bronze, Silver, Gold, Platinum]
+    keywords: [dashboard, 仪表盘, 可视化, 图表, 数据展示, flask, streamlit, chart]
 
   - id: C7
     name_cn: Agent自动化
     name_en: Agent Automation
     levels: [Bronze, Silver, Gold, Platinum]
+    keywords: [agent, 自动化, workflow, 流程, automation, openclaw, claude code, hook]
 
   - id: C8
     name_cn: 微信班级管理
     name_en: WeChat Class Management
     due_date: "2026-04-27"
     levels: [Bronze, Silver, Gold, Platinum]
-    signal_keywords: [微信, wechat, 班级管理, 消息提取, bridge]
+    keywords: [微信, wechat, 班级管理, 消息提取, bridge, 管理系统, 群管理]

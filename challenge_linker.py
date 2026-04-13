@@ -13,20 +13,14 @@ import argparse
 import json
 import re
 import sys
+from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from config_loader import get_config
 
-CHALLENGE_KEYWORDS = {
-    "C1": ["环境", "setup", "install", "配置", "python", "vscode", "terminal", "终端"],
-    "C2": ["api", "接口", "request", "response", "json", "http", "openai", "anthropic"],
-    "C3": ["群", "参与", "discussion", "消息", "发言", "互动"],
-    "C4": ["skill", "技能", "分享", "知识", "能力", "tool"],
-    "C5": ["github", "git", "repo", "仓库", "commit", "push", "pull"],
-    "C6": ["dashboard", "仪表盘", "可视化", "图表", "数据展示"],
-    "C7": ["agent", "自动化", "workflow", "流程", "automation"],
-    "C8": ["微信", "wechat", "班级管理", "消息提取", "bridge"],
-}
-
-EXPLICIT_REF = re.compile(r"\b(C[1-8][A-Z]?)\b", re.I)
+_cfg = get_config()
+CHALLENGE_KEYWORDS = _cfg.challenge_keywords
+EXPLICIT_REF = re.compile(rf"({_cfg.challenge_ref_pattern})", re.I)
 
 
 def link(msg: dict) -> str | None:

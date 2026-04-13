@@ -19,6 +19,9 @@ from datetime import datetime, timezone, timedelta
 sys.path.insert(0, str(Path(__file__).parent.parent / "wechat-class-manager"))
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from graph import PropertyGraph
+from config_loader import get_config
+
+_cfg = get_config()
 
 try:
     from flask import Flask, jsonify, render_template_string
@@ -34,7 +37,7 @@ HTML = """
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI+X Elite Class Dashboard</title>
+<title>{{ group_name }} Dashboard</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -70,8 +73,8 @@ HTML = """
 </style>
 </head>
 <body>
-<h1>📊 AI+X Elite Class Dashboard</h1>
-<p class="subtitle">今日数据 · 更新于 {{ updated_at }} · AI+X Elite Class（共 {{ stats.students }} 人）</p>
+<h1>📊 {{ group_name }} Dashboard</h1>
+<p class="subtitle">今日数据 · 更新于 {{ updated_at }} · {{ group_name }}（共 {{ stats.students }} 人）</p>
 
 <div class="grid">
 
@@ -206,7 +209,7 @@ def get_dashboard_data():
     top_active = [(n, c, int(c / max_cnt * 100)) for n, c in activity[:10] if c > 0]
 
     # Challenge rates
-    challenge_list = [("C5", "GitHub主页"), ("C8", "微信班级管理")]
+    challenge_list = _cfg.challenge_list
     challenge_rates = []
     for ch_id, ch_name in challenge_list:
         ch_node_id = f"challenge_{ch_id}"
@@ -244,6 +247,7 @@ def get_dashboard_data():
         "alerts": alerts,
         "student_table": student_table,
         "updated_at": now.strftime("%Y-%m-%d %H:%M:%S"),
+        "group_name": _cfg.group_display_name,
     }
 
 

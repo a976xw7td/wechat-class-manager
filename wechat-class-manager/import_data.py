@@ -19,14 +19,12 @@ except ImportError:
     HAS_YAML = False
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from graph import PropertyGraph
+from config_loader import get_config
 
-
-CHALLENGES = {
-    "C1": "环境配置", "C2": "API接入", "C3": "群内参与",
-    "C4": "技能分享", "C5": "GitHub主页", "C6": "仪表盘",
-    "C7": "Agent自动化", "C8": "微信班级管理",
-}
+_cfg = get_config()
+CHALLENGES = {c["id"]: c.get("name_cn", c["id"]) for c in _cfg.challenges}
 
 # 真实群成员（27人），display_name = 微信昵称
 REAL_MEMBERS = [

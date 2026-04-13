@@ -1,7 +1,16 @@
 group:
+  # 微信群名称（用于 wechat_bridge.py --group 参数）
   name: "AI+X Elite Class"
+  # 显示名称（用于仪表盘标题、报告标题）
+  display_name: "AI+X Elite Class"
   wechat_username: "52461657086@chatroom"
-  teacher_ids: ["肖福军班主任"]
-  ta_ids: ["佟佳睿博士IEEE", "胡祥恩"]
+  teacher_ids: ["肖福军班主任", "肖福军 Ethan"]
+  ta_ids: ["Richard-佟佳睿", "胡祥恩"]
 
-members: []  # 从 wechat-cli members 命令动态填充
+alerts:
+  # 距 deadline 几天内触发预警
+  deadline_warning_days: 3
+  # 连续几天无消息视为沉默学生
+  silent_days: 7
+  # 提交率低于此阈值触发预警（0~1）
+  low_submission_threshold: 0.30

@@ -20,12 +20,12 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "wechat-class-manager"))
+sys.path.insert(0, str(Path(__file__).parent))
 from graph import PropertyGraph
+from config_loader import get_config
 
-CHALLENGES_DEADLINES = {
-    "C5": "2026-04-20",
-    "C8": "2026-04-27",
-}
+_cfg = get_config()
+CHALLENGES_DEADLINES = _cfg.challenges_with_deadlines
 
 ALERT_TYPES = {
     "deadline_warning": "⚠️  Deadline Warning",
@@ -43,7 +43,7 @@ def check_deadline_warnings(g: PropertyGraph, now: datetime) -> list[dict]:
             tzinfo=timezone(timedelta(hours=8))
         )
         days_left = (deadline - now).days
-        if not (0 <= days_left <= 3):
+        if not (0 <= days_left <= _cfg.deadline_warning_days):
             continue
 
         challenge_node_id = f"challenge_{ch_id}"
@@ -66,7 +66,9 @@ def check_deadline_warnings(g: PropertyGraph, now: datetime) -> list[dict]:
     return alerts
 
 
-def check_silent_students(g: PropertyGraph, now: datetime, days: int = 7) -> list[dict]:
+def check_silent_students(g: PropertyGraph, now: datetime, days: int | None = None) -> list[dict]:
+    if days is None:
+        days = _cfg.silent_days
     """Alert if student has sent no messages for `days` consecutive days."""
     alerts = []
     cutoff = (now - timedelta(days=days)).isoformat()
@@ -96,7 +98,9 @@ def check_silent_students(g: PropertyGraph, now: datetime, days: int = 7) -> lis
     return alerts
 
 
-def check_low_submission_rate(g: PropertyGraph, now: datetime, threshold: float = 0.3) -> list[dict]:
+def check_low_submission_rate(g: PropertyGraph, now: datetime, threshold: float | None = None) -> list[dict]:
+    if threshold is None:
+        threshold = _cfg.low_submission_threshold
     """Alert if a challenge has submission rate below threshold."""
     alerts = []
     all_students = [s for s in g.all_nodes("Student") if s["id"] != "student_system"]

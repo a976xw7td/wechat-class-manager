@@ -17,7 +17,11 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "wechat-class-manager"))
+sys.path.insert(0, str(Path(__file__).parent))
 from graph import PropertyGraph
+from config_loader import get_config
+
+_cfg = get_config()
 
 
 def ascii_bar(value: float, width: int = 20) -> str:
@@ -45,7 +49,7 @@ def generate_weekly_report(g: PropertyGraph, week_start: datetime, period_days: 
     top5 = activity[:5]
 
     # Submission stats per challenge
-    challenges = [("C5", "GitHub主页"), ("C8", "微信班级管理")]
+    challenges = _cfg.challenge_list
     submission_stats = []
     for ch_id, ch_name in challenges:
         ch_node_id = f"challenge_{ch_id}"
@@ -58,7 +62,7 @@ def generate_weekly_report(g: PropertyGraph, week_start: datetime, period_days: 
     total_msgs = len(all_msgs)
 
     lines = [
-        f"# 📊 AI+X Elite Class 周报",
+        f"# 📊 {_cfg.group_display_name} 周报",
         f"**统计周期：** {week_start.strftime('%Y-%m-%d')} ~ {week_end.strftime('%Y-%m-%d')}{'（今日）' if period_days == 1 else '（本周）'}",
         f"**生成时间：** {now.strftime('%Y-%m-%d %H:%M')}",
         "",
