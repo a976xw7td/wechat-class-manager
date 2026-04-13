@@ -1,0 +1,7 @@
+group:
+  name: "AI+X Elite Class"
+  wechat_username: "52461657086@chatroom"
+  teacher_ids: ["肖福军班主任"]
+  ta_ids: ["佟佳睿博士IEEE", "胡祥恩"]
+
+members: []  # 从 wechat-cli members 命令动态填充

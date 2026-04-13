@@ -1,0 +1,8 @@
+# group_nicknames.yaml — copy this file to group_nicknames.yaml and fill in your group's data
+# Format: wechat_id: "group_nickname"
+# WeChat ID is the account ID shown by wechat-cli; group nickname is what members set in the group
+
+nicknames:
+  wxid_xxxxxxxxxxxxxxx: "张三 大二 计算机科学"
+  wxid_yyyyyyyyyyyyyyy: "李四 大一 软件工程"
+  # Add all group members here ...

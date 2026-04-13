@@ -1,0 +1,44 @@
+challenges:
+  - id: C1
+    name_cn: 环境配置
+    name_en: Environment Setup
+    levels: [Bronze, Silver, Gold, Platinum]
+
+  - id: C2
+    name_cn: API接入
+    name_en: API Integration
+    levels: [Bronze, Silver, Gold, Platinum]
+
+  - id: C3
+    name_cn: 群内参与
+    name_en: Group Participation
+    levels: [Bronze, Silver, Gold, Platinum]
+
+  - id: C4
+    name_cn: 技能分享
+    name_en: Skill Sharing
+    levels: [Bronze, Silver, Gold, Platinum]
+
+  - id: C5
+    name_cn: GitHub主页
+    name_en: GitHub Pages
+    due_date: "2026-04-20"
+    levels: [Bronze, Silver, Gold, Platinum]
+    signal_keywords: [github, git, repo, 仓库, pages]
+
+  - id: C6
+    name_cn: 仪表盘
+    name_en: Dashboard
+    levels: [Bronze, Silver, Gold, Platinum]
+
+  - id: C7
+    name_cn: Agent自动化
+    name_en: Agent Automation
+    levels: [Bronze, Silver, Gold, Platinum]
+
+  - id: C8
+    name_cn: 微信班级管理
+    name_en: WeChat Class Management
+    due_date: "2026-04-27"
+    levels: [Bronze, Silver, Gold, Platinum]
+    signal_keywords: [微信, wechat, 班级管理, 消息提取, bridge]

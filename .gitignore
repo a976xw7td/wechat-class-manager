@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Sensitive data — real WeChat messages & student info
+messages.jsonl
+classified.jsonl
+linked.jsonl
+submissions.json
+alerts.json
+qa_pairs.json
+weekly_report.md
+wechat-class-manager/data/graph.db
+wechat-class-manager/config/group_nicknames.yaml
+
+# Watcher state
+.watcher_checkpoint.json
+
+# OMC internal state
+.omc/
+wechat-class-manager/.omc/
+
+# macOS
+.DS_Store
